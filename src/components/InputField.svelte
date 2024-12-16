@@ -20,6 +20,8 @@
     on:input={handleInput}
     on:keyup={onKeyUp}
     tabindex={tabindex}
+    id="inputTestId"
+    maxLength="1"
 />
 
 <style>
