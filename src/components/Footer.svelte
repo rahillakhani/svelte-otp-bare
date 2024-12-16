@@ -1,6 +1,6 @@
 <footer>
     <p>
-        Didn’t receive a code? <a href="/retry" on:click|preventDefault={resendCode}>Resend</a>
+        Didn’t receive a code? <a href="/retry" onclick={resendCode}>Resend</a>
     </p>
 </footer>
 

@@ -4,11 +4,11 @@
 	import Footer from "./components/Footer.svelte";
 	
 	let otpData = ["", "", "", "", "", ""];
-	let isValid = false;
+	let isValid = $state(false);
 	
 	// Array to store refs for input fields
-	$: inputsRefs = [];
-	$: buttonRef = null
+	let inputsRefs = $state([]);
+	let buttonRef = $state(null);
 	
 	// Function to handle input in OTP fields
 	function handleInput(index, value, event) {
@@ -55,13 +55,13 @@
 		class="otp-action"
 		maxlength="1"
 		bind:value={otpData[index]}
-		on:keyup={(e) => handleInput(index, e.target.value, e)}
+		onkeyup={(e) => handleInput(index, e.target.value, e)}
 		bind:this={inputsRefs[index]} 
 		/>
 		{/each}
 	</div>
 	<div class="verify-button">
-		<button bind:this={buttonRef}  on:click={submitOTP} disabled={!isValid}>
+		<button bind:this={buttonRef}  onclick={submitOTP} disabled={!isValid}>
 			Verify
 		</button>
 	</div>
@@ -87,9 +87,6 @@
 		transition: border-color 0.2s;
 	}
 	
-	.otp-input:focus {
-		border-color: #007BFF;
-	}
 	.verify-button {
 		display: flex;
 		justify-content: center;
